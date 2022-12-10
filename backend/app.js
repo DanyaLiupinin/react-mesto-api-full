@@ -1,6 +1,6 @@
-require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const app = express();
 const bodyParser = require('body-parser');
@@ -13,7 +13,8 @@ const { auth } = require('./middlewares/auth');
 const errorHandler = require('./middlewares/errorHandler');
 const NotFoundError = require('./errors/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const cors = require('./middlewares/cors');
+//const cors = require('./middlewares/cors');
+const cors = require('cors');
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
@@ -22,14 +23,34 @@ app.listen(3000);
 app.use(bodyParser.json());
 app.use(requestLogger);
 
+const options = {
+  origin: [
+    'https://praktikum.tk',
+    'https://praktikum.tk',
+    'http://localhost:3000',
+    'project.mesto.nomoredomains.club',
+    'project.mesto.nomoredomains.club',
+  ],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
+  credentials: true,
+};
+
+app.use('*', cors(options));
+
+
 app.use('/users', auth, userRouter);
 app.use('/cards', auth, cardRouter);
 
+/*
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
+*/
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({

@@ -24,10 +24,11 @@ export const authorize = (password, email) => {
     headers: {
       'Content-Type': 'application/json'
     },
+    credentials: 'include',
     body: JSON.stringify({
       "password": password,
       "email": email
-    })
+    }),
   })
     .then((res) => {
       return checkRes(res)

@@ -1,8 +1,15 @@
-const allowedCors = [
-  'project.mesto.nomoredomains.club',
-  'https://danyaliupinin.github.io',
-  'http://localhost:3000',
-];
+/*
+const allowedCors = {
+  origin: [
+    'https://praktikum.tk',
+    'https://praktikum.tk',
+    'http://localhost:3000',
+    'project.mesto.nomoredomains.club',
+    'project.mesto.nomoredomains.club',
+  ],
+  credentials: true,
+};
+
 
 const corsHandler = (req, res, next) => {
   const { origin } = req.headers; // Сохраняем источник запроса в переменную origin
@@ -29,3 +36,4 @@ const corsHandler = (req, res, next) => {
 };
 
 module.exports = corsHandler;
+*/

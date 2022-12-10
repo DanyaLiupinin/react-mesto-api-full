@@ -1,0 +1,8 @@
+.account__submit-button_active {
+    cursor: pointer;
+    opacity: 1;
+ }
+ 
+ .account__submit-button_active:hover {
+    opacity: .8;
+ }

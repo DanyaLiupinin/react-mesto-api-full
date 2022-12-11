@@ -28,9 +28,9 @@ const options = {
     'http://localhost:3000',
     'https://praktikum.tk',
     'https://praktikum.tk',
-    'project.mesto.nomoredomains.club',
-    'project.mesto.nomoredomains.club',
-    'project.mesto.nomoredomains.club/users/me'
+    'https://project.mesto.nomoredomains.club',
+    'https://project.mesto.nomoredomains.club',
+    'https://project.mesto.nomoredomains.club/users/me'
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,

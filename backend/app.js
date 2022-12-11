@@ -25,11 +25,12 @@ app.use(requestLogger);
 
 const options = {
   origin: [
-    'https://praktikum.tk',
-    'https://praktikum.tk',
     'http://localhost:3000',
+    'https://praktikum.tk',
+    'https://praktikum.tk',
     'project.mesto.nomoredomains.club',
     'project.mesto.nomoredomains.club',
+    'project.mesto.nomoredomains.club/users/me'
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,

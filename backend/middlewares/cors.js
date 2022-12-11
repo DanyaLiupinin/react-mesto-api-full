@@ -10,7 +10,6 @@ const allowedCors = {
   credentials: true,
 };
 
-
 const corsHandler = (req, res, next) => {
   const { origin } = req.headers; // Сохраняем источник запроса в переменную origin
   // проверяем, что источник запроса есть среди разрешённых

@@ -18,20 +18,12 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
-app.use(cors);
-app.listen(3000);
-app.use(bodyParser.json());
-app.use(requestLogger);
-
-/*
 const options = {
   origin: [
     'http://localhost:3000',
-    'https://praktikum.tk',
+    'http://localhost:3001',
     'https://praktikum.tk',
     'https://project.mesto.nomoredomains.club',
-    'https://project.mesto.nomoredomains.club',
-    'https://project.mesto.nomoredomains.club/users/me',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
@@ -39,9 +31,11 @@ const options = {
   allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
   credentials: true,
 };
-*/
 
-app.use(cors());
+app.use('*', cors(options));
+app.listen(3000);
+app.use(bodyParser.json());
+app.use(requestLogger);
 
 app.use('/users', auth, userRouter);
 app.use('/cards', auth, cardRouter);

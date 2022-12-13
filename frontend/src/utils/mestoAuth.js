@@ -1,9 +1,10 @@
-export const BASE_URL = 'https://api.project.mesto.nomoredomains.club';
+export const BASE_URL = 'https://api.project.mesto.nomoredomains.club/';
 
 
 export const register = (password, email) => {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
+    credentials: "include",
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
@@ -35,6 +36,9 @@ export const authorize = (password, email) => {
     .then((res) => {
       return checkRes(res)
     })
+    .then((token) => {
+      return token
+    })
 }
 
 
@@ -44,11 +48,14 @@ export const checkToken = (token) => {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
+      'Authorization': token,
     }
   })
     .then((res) => {
       return res.json()
+    })
+    .then((data) => {
+      return data
     })
 }
 

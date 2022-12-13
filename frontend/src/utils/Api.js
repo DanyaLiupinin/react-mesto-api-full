@@ -1,23 +1,31 @@
 class Api {
-  constructor({ baseUrl, headers }) {
+  constructor({ baseUrl }) {
     this._url = baseUrl
-    this._headers = headers
   }
 
   getInitialCards() {
     return fetch(`${this._url}/cards`, {
       method: 'GET',
-      headers: this._headers
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-Type': 'application/json',
+      },
+      credentials: "include"
     })
       .then((res) => {
         return this._checkRes(res)
       })
+      
   }
 
   getUserInfo() {
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
-      headers: this._headers
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-Type': 'application/json',
+      },
+      credentials: "include"
     })
       .then((res) => {
         return this._checkRes(res)
@@ -27,7 +35,11 @@ class Api {
   editUserInfo(data) {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
-      headers: this._headers,
+      credentials: "include",
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         name: data.name,
         about: data.about
@@ -41,7 +53,11 @@ class Api {
   addCard(card) {
     return fetch(`${this._url}/cards`, {
       method: 'POST',
-      headers: this._headers,
+      credentials: "include",
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         name: card.name,
         link: card.link
@@ -55,7 +71,11 @@ class Api {
   putLike(cardId) {
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: 'PUT',
-      headers: this._headers
+      credentials: "include",
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-Type': 'application/json',
+      }
     })
       .then((res) => {
         return this._checkRes(res)
@@ -65,7 +85,11 @@ class Api {
   deleteLike(cardId) {
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: 'DELETE',
-      headers: this._headers
+      credentials: "include",
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-Type': 'application/json',
+      }
     })
       .then((res) => {
         return this._checkRes(res)
@@ -75,7 +99,11 @@ class Api {
   deleteCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: 'DELETE',
-      headers: this._headers
+      credentials: "include",
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-Type': 'application/json',
+      }
     })
       .then((res) => {
         return this._checkRes(res)
@@ -85,7 +113,11 @@ class Api {
   updateAvatar(data) {
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
-      headers: this._headers,
+      credentials: "include",
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         avatar: data.avatar
       })
@@ -105,11 +137,8 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://api.project.mesto.nomoredomains.club",
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `${localStorage.getItem('jwt')}`,
-  },
+  baseUrl: "https://api.project.mesto.nomoredomains.club/",
+  
 });
 
 export default api

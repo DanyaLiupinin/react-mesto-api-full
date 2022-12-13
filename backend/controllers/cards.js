@@ -6,7 +6,7 @@ const status = require('../utils/status');
 
 const getCards = (req, res, next) => {
   Card.find({})
-    .populate(['owner', 'likes'])
+    // .populate(['owner'])
     .then((data) => {
       res.status(status.OK).send(data);
     })
@@ -15,9 +15,8 @@ const getCards = (req, res, next) => {
 
 const createCard = (req, res, next) => {
   const { name, link } = req.body;
-  const owner = req.user._id;
 
-  Card.create({ name, link, owner })
+  Card.create({ name, link, owner: req.user._id })
     .then((data) => {
       res.status(status.CREATED).send(data);
     })
@@ -56,12 +55,13 @@ const deleteCard = (req, res, next) => {
 };
 
 const putLike = (req, res, next) => {
-  Card.findByIdAndUpdate(req.params.cardId, { $addToSet: { likes: req.user._id } }, { new: true })
+  const userId = req.user._id;
+  Card.findByIdAndUpdate(req.params.cardId, { $addToSet: { likes: userId } }, { new: true })
     .orFail(() => {
       throw new NotFoundError('Карточка не найдена');
     })
-    .then((data) => {
-      res.status(status.CREATED).send(data);
+    .then((cardLike) => {
+      res.status(status.CREATED).send(cardLike);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -78,8 +78,8 @@ const deleteLike = (req, res, next) => {
     .orFail(() => {
       throw new NotFoundError('Карточка не найдена');
     })
-    .then((data) => {
-      res.status(status.OK).send(data);
+    .then((cardLike) => {
+      res.status(status.OK).send(cardLike);
     })
     .catch((err) => {
       if (err.name === 'CastError') {

@@ -30,19 +30,20 @@ function App() {
    const [loggedIn, setLoggedIn] = useState(false)
    const [userEmail, setUserEmail] = useState('')
    const [isSuccess, setIsSuccess] = useState(false)
-   const history = useHistory()
+   const history = useHistory();
 
    // проверяет jwt пользователя при возвращении на сайт 
 
    useEffect(() => {
       const token = localStorage.getItem('jwt')
       if (token) {
-         mestoAuth.checkToken(token)
+         mestoAuth.checkToken(`Bearer ${token}`)
             .then((userData) => {
                if (userData) {
                   setLoggedIn(true)
                   setIsSuccess(true)
                   setUserEmail(userData.data.email)
+                  setCurrentUser(userData.data)
                   history.push('/')
                }
             })
@@ -51,8 +52,11 @@ function App() {
                apiError(err)
             })
       }
-   }, [loggedIn])
+   }, [loggedIn, history])
 
+   // по идее это можно удалить
+
+   /*
    useEffect(() => {
       if (!loggedIn) {
          return
@@ -66,6 +70,7 @@ function App() {
             })
       }
    }, [loggedIn])
+   */
 
    // стейт карточек и обращение к api за начальным массивом 
 
@@ -77,7 +82,7 @@ function App() {
       } else {
          api.getInitialCards()
             .then(cards => {
-               setCards(cards)
+               setCards(cards.reverse())
             })
             .catch((err) => {
                apiError(err)
@@ -87,7 +92,7 @@ function App() {
 
    function handleCardLike(card) {
 
-      const isLiked = card.likes.some(like => like._id === currentUser._id)
+      const isLiked = card.likes.some(like => like === currentUser._id)      
 
       if (!isLiked) {
 
@@ -104,7 +109,7 @@ function App() {
             })
             .catch((err) => {
                apiError(err)
-            })
+            }) 
 
       } else {
          api.deleteLike(card._id)
@@ -115,6 +120,7 @@ function App() {
                apiError(err)
             })
       }
+      
    }
 
    function handleCardDelete(card) {
@@ -177,8 +183,10 @@ function App() {
    }
 
    function handleAddPlaceSubmit(data) {
+      console.log(data)
       api.addCard(data)
          .then((newCard) => {
+            console.log(newCard)
             setCards([newCard, ...cards])
          })
          .catch((err) => {
@@ -198,7 +206,6 @@ function App() {
          })
          .catch((err) => {
             setIsSuccess(false)
-            console.log(err)
          })
          .finally(() => {
             handleInfoTooltip()
@@ -209,7 +216,7 @@ function App() {
       mestoAuth.authorize(password, email)
          .then((data) => {
             if (data.token) {
-               localStorage.setItem('jwt', data.token);
+               localStorage.setItem("jwt", data.token)
                setLoggedIn(true)
                setIsSuccess(true)
                history.push('/')
@@ -223,6 +230,8 @@ function App() {
    }
 
    function handleSignOut() {
+      setCurrentUser({});
+      setUserEmail('');
       localStorage.removeItem("jwt");
       history.push("/signin");
       setLoggedIn(false);

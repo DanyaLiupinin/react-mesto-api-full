@@ -1,7 +1,7 @@
 .element {
    position: relative;
    max-width: 282px;
-   min-height: 361px;
+   height: fit-content;
    background-color: white;
    border-radius: 10px;
    -webkit-box-sizing: border-box;

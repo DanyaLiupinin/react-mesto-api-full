@@ -11,7 +11,7 @@ const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
 const { login, createUser } = require('./controllers/users');
 const { auth } = require('./middlewares/auth');
-const errorHandler = require('./middlewares/errorHandler');
+// const errorHandler = require('./middlewares/errorHandler');
 const NotFoundError = require('./errors/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 // const cors = require('./middlewares/cors');
@@ -36,7 +36,7 @@ const options = {
 */
 
 // app.use('*', cors(options));
-app.use(cors);
+app.use(cors());
 app.listen(3000);
 app.use(bodyParser.json());
 app.use(requestLogger);
@@ -77,4 +77,6 @@ app.use((req, res, next) => {
 });
 
 app.use(errors());
+/*
 app.use(errorHandler);
+*/

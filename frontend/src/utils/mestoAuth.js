@@ -1,10 +1,9 @@
-export const BASE_URL = 'https://api.project.mesto.nomoredomains.club/';
+export const BASE_URL = 'https://api.project.mesto.nomoredomains.club';
 
 
 export const register = (password, email) => {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
-    credentials: "include",
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
@@ -27,7 +26,6 @@ export const authorize = (password, email) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    credentials: "include",
     body: JSON.stringify({
       "password": password,
       "email": email

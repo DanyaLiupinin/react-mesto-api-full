@@ -18,6 +18,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
+/*
 const options = {
   origin: [
     'http://localhost:3000',
@@ -32,8 +33,10 @@ const options = {
   allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
   credentials: true,
 };
+*/
 
-app.use('*', cors(options));
+// app.use('*', cors(options));
+app.use(cors);
 app.listen(3000);
 app.use(bodyParser.json());
 app.use(requestLogger);

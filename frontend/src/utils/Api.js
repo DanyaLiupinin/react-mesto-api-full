@@ -10,12 +10,11 @@ class Api {
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json',
       },
-      credentials: "include"
     })
       .then((res) => {
         return this._checkRes(res)
       })
-      
+
   }
 
   getUserInfo() {
@@ -25,7 +24,6 @@ class Api {
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json',
       },
-      credentials: "include"
     })
       .then((res) => {
         return this._checkRes(res)
@@ -35,7 +33,6 @@ class Api {
   editUserInfo(data) {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
-      credentials: "include",
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json',
@@ -53,7 +50,6 @@ class Api {
   addCard(card) {
     return fetch(`${this._url}/cards`, {
       method: 'POST',
-      credentials: "include",
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json',
@@ -71,7 +67,6 @@ class Api {
   putLike(cardId) {
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: 'PUT',
-      credentials: "include",
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json',
@@ -85,7 +80,6 @@ class Api {
   deleteLike(cardId) {
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: 'DELETE',
-      credentials: "include",
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json',
@@ -99,7 +93,6 @@ class Api {
   deleteCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: 'DELETE',
-      credentials: "include",
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json',
@@ -113,7 +106,6 @@ class Api {
   updateAvatar(data) {
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
-      credentials: "include",
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json',
@@ -137,8 +129,8 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://api.project.mesto.nomoredomains.club/",
-  
+  baseUrl: "https://api.project.mesto.nomoredomains.club",
+
 });
 
 export default api

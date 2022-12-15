@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const app = express();
 const bodyParser = require('body-parser');
 const { celebrate, Joi } = require('celebrate');
-// const { errors } = require('celebrate');
+const { errors } = require('celebrate');
 const cors = require('cors');
 const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
@@ -75,9 +75,9 @@ app.use((req, res, next) => {
   const error = new NotFoundError('Страница не найдена');
   next(error);
 });
-/*
+
 app.use(errors());
-*/
+
 /*
 app.use(errorHandler);
 */

@@ -11,21 +11,19 @@ const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
 const { login, createUser } = require('./controllers/users');
 const { auth } = require('./middlewares/auth');
-// const errorHandler = require('./middlewares/errorHandler');
+const errorHandler = require('./middlewares/errorHandler');
 const NotFoundError = require('./errors/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 // const cors = require('./middlewares/cors');
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
-/*
 const options = {
   origin: [
     'http://localhost:3000',
-    'http://localhost:3001',
     'https://praktikum.tk',
     'https://project.mesto.nomoredomains.club',
-    'http://project.mesto.nomoredomains.club',
+    'https://danyaliupinin.github.io',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
@@ -33,9 +31,8 @@ const options = {
   allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
   credentials: true,
 };
-*/
 
-app.use('*', cors());
+app.use('*', cors(options));
 app.listen(3000);
 app.use(bodyParser.json());
 app.use(requestLogger);
@@ -76,7 +73,4 @@ app.use((req, res, next) => {
 });
 
 app.use(errors());
-
-/*
 app.use(errorHandler);
-*/

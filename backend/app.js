@@ -35,8 +35,7 @@ const options = {
 };
 */
 
-// app.use('*', cors(options));
-app.use(cors());
+app.use('*', cors());
 app.listen(3000);
 app.use(bodyParser.json());
 app.use(requestLogger);

@@ -14,7 +14,6 @@ const { auth } = require('./middlewares/auth');
 const errorHandler = require('./middlewares/errorHandler');
 const NotFoundError = require('./errors/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-// const cors = require('./middlewares/cors');
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
@@ -40,13 +39,11 @@ app.use(requestLogger);
 app.use('/users', auth, userRouter);
 app.use('/cards', auth, cardRouter);
 
-/*
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
-*/
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({

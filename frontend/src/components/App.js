@@ -54,24 +54,6 @@ function App() {
       }
    }, [loggedIn, history])
 
-   // по идее это можно удалить
-
-   /*
-   useEffect(() => {
-      if (!loggedIn) {
-         return
-      } else {
-         api.getUserInfo()
-            .then((data) => {
-               setCurrentUser(data)
-            })
-            .catch((err) => {
-               apiError(err)
-            })
-      }
-   }, [loggedIn])
-   */
-
    // стейт карточек и обращение к api за начальным массивом 
 
    const [cards, setCards] = useState([])

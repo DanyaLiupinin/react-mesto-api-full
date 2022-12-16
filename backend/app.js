@@ -4,16 +4,17 @@ require('dotenv').config();
 
 const app = express();
 const bodyParser = require('body-parser');
-const { celebrate, Joi } = require('celebrate');
+// const { celebrate, Joi } = require('celebrate');
 const { errors } = require('celebrate');
 const cors = require('cors');
-const userRouter = require('./routes/users');
-const cardRouter = require('./routes/cards');
-const { login, createUser } = require('./controllers/users');
-const { auth } = require('./middlewares/auth');
+// const userRouter = require('./routes/users');
+// const cardRouter = require('./routes/cards');
+// const { login, createUser } = require('./controllers/users');
+// const { auth } = require('./middlewares/auth');
 const errorHandler = require('./middlewares/errorHandler');
-const NotFoundError = require('./errors/NotFoundError');
+// const NotFoundError = require('./errors/NotFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const router = require('./routes');
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
@@ -35,16 +36,14 @@ app.use('*', cors(options));
 app.listen(3000);
 app.use(bodyParser.json());
 app.use(requestLogger);
+app.use(router);
 
+/*
 app.use('/users', auth, userRouter);
 app.use('/cards', auth, cardRouter);
+*/
 
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-});
-
+/*
 app.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
@@ -61,13 +60,9 @@ app.post('/signup', celebrate({
     password: Joi.string().required(),
   }),
 }), createUser);
+*/
 
 app.use(errorLogger);
-
-app.use((req, res, next) => {
-  const error = new NotFoundError('Страница не найдена');
-  next(error);
-});
 
 app.use(errors());
 app.use(errorHandler);

@@ -6,7 +6,7 @@ const { NODE_ENV, JWT_SECRET } = process.env;
 module.exports.auth = (req, res, next) => {
   const { authorization } = req.headers; // извлекаем заголовок с авторизацией из запрсоа
   if (!authorization || !authorization.startsWith('Bearer ')) { // проверяем есть ли он и с чего начинается
-    next(new UnauthorizatedError('Необходима авторизация'));
+    throw new UnauthorizatedError('Необходима авторизация');
   }
   const token = authorization.replace('Bearer ', ''); // выкидываем из заголовка bearer
   let payload;

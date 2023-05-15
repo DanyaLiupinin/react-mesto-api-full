@@ -6,9 +6,9 @@ const app = express();
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 const cors = require('cors');
+const router = require('./routes');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const router = require('./routes');
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
 

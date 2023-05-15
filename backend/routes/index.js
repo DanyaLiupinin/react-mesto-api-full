@@ -30,4 +30,4 @@ router.use(auth, (req, res, next) => {
   next(error);
 });
 
-exports.router = router;
+module.exports = router;

@@ -51,4 +51,4 @@ Start project:
 ``` npm run start ```
 
 ## Link ##
-https://project.mesto.nomoredomains.club
+https://project.mesto.nomoredomains.club (deployment is temporarily inactive)

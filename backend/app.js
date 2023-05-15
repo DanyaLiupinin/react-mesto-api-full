@@ -10,7 +10,9 @@ const router = require('./routes');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-mongoose.connect('mongodb://localhost:27017/mestodb');
+const { MONGODB_URL } = process.env;
+
+mongoose.connect(MONGODB_URL ? 'mongodb+srv://mesto-database:<Danila_1252>@cluster0.v50ygcd.mongodb.net/mesto-database?retryWrites=true&w=majority' : 'mongodb://localhost:27017/mestodb');
 
 const options = {
   origin: [
@@ -18,6 +20,7 @@ const options = {
     'https://praktikum.tk',
     'https://project.mesto.nomoredomains.club',
     'https://danyaliupinin.github.io',
+    'https://mesto-backend-tet4.onrender.com/',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,

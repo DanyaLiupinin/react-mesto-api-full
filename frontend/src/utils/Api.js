@@ -129,7 +129,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://api.project.mesto.nomoredomains.club",
+  baseUrl: "https://mesto-backend-tet4.onrender.com/",
 
 });
 

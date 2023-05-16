@@ -22,6 +22,7 @@ const options = {
     'https://project.mesto.nomoredomains.club',
     'https://danyaliupinin.github.io',
     'https://mesto-frontend-mdzl.onrender.com',
+    'https://danyaliupinin.github.io/react-mesto-api-full',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,

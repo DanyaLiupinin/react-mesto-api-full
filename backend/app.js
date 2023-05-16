@@ -10,12 +10,9 @@ const router = require('./routes');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const dbUrl = 'mongodb+srv://mestoadmin:MestoAdmin@cluster0.v50ygcd.mongodb.net/mesto-database?retryWrites=true&w=majority';
+const { MONGO_URL } = process.env;
 
-// mongoose.connect('mongodb://localhost:27017/mestodb');
-mongoose
-  .connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then((res) => console.log(res));
+mongoose.connect(MONGO_URL ? (MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true }) : 'mongodb://localhost:27017/mestodb');
 
 const options = {
   origin: [

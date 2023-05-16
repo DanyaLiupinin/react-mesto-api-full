@@ -12,7 +12,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { MONGO_URL } = process.env;
 
-mongoose.connect(MONGO_URL ? (MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true }) : 'mongodb://localhost:27017/mestodb');
+mongoose.connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const options = {
   origin: [

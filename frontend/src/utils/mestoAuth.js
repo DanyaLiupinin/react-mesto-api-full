@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.project.mesto.nomoredomains.club';
+export const BASE_URL = 'https://mesto-backend-tet4.onrender.com';
 
 
 export const register = (password, email) => {
@@ -14,6 +14,7 @@ export const register = (password, email) => {
     })
   })
     .then((response) => {
+      console.log(response)
       return checkRes(response)
     })
 };

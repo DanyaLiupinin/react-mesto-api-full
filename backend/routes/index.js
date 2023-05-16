@@ -25,6 +25,7 @@ router.post('/signup', celebrate({
 
 router.use('/users', auth, userRouter);
 router.use('/cards', auth, cardRouter);
+
 router.use(auth, (req, res, next) => {
   const error = new NotFoundError('Страница не найдена');
   next(error);

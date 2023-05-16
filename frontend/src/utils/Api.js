@@ -129,7 +129,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://mesto-backend-tet4.onrender.com/",
+  baseUrl: "https://mesto-backend-tet4.onrender.com",
 
 });
 

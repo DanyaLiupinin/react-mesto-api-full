@@ -23,6 +23,7 @@ const options = {
     'https://danyaliupinin.github.io',
     'https://mesto-frontend-mdzl.onrender.com',
     'https://danyaliupinin.github.io/react-mesto-api-full',
+    'https://www.dkovandeveloper.online/',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
@@ -34,8 +35,8 @@ const options = {
 app.use('*', cors(options));
 app.listen(3000);
 app.use(bodyParser.json());
-app.use(requestLogger);
 app.use(router);
+app.use(requestLogger);
 
 app.use(errorLogger);
 

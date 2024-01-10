@@ -15,5 +15,3 @@ function PopupWithForm(props) {
 }
 
 export default PopupWithForm
-
-// <button type="submit" className="popup__submit-button popup__submit-button_active" disabled>{props.button}</button>

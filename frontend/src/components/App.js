@@ -177,7 +177,7 @@ function App() {
    }
 
    function apiError(err) {
-      alert(`Ошибка. ${err}`)
+      alert(`Error. ${err}`)
    }
 
    function handleRegister(password, email) {
@@ -282,8 +282,8 @@ function App() {
                isSuccess={isSuccess}
                isOpen={isInfoTooltipOpen}
                onClose={closeAllPopups}
-               successTitle='Вы успешно зарегистрировались!'
-               failedTitle='Что-то пошло не так! Попробуйте ещё раз.'
+               successTitle='You have successfully registered!'
+               failedTitle='Something went wrong! Try again.'
             />
          </CurrentUserContext.Provider>
       </div>

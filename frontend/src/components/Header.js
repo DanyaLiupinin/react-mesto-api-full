@@ -16,16 +16,16 @@ function Header({ email, onClick }) {
                 <Route exact path="/">
                     <div className='header__wrapper'>
                         <p className='header__user'>{email}</p>
-                        <button className='header__logout' onClick={signOut}>Выйти</button>
+                        <button className='header__logout' onClick={signOut}>Logout</button>
                     </div>
                 </Route>
 
                 <Route path="/signup">
-                    <Link className="header__auth-link" to="signin">Войти</Link>
+                    <Link className="header__auth-link" to="signin">Login</Link>
                 </Route>
 
                 <Route path="/signin">
-                    <Link className="header__auth-link" to="signup">Регистрация</Link>
+                    <Link className="header__auth-link" to="signup">Registration</Link>
                 </Route>
             </Switch>
         </header>

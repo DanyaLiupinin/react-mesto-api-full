@@ -40,12 +40,12 @@ function AddPlacePopup(props) {
             onSubmit={handleSubmit}
             button='Создать'>
             <div className="popup__input-field">
-                <input className="popup__input popup__input_content_place" id="place" name="name" type="text" placeholder="Название" value={placeName} onChange={handlePlaceNameChange} required minLength="2" maxLength="30" />
-                <span className="popup__input-error" id="error-place">Вы пропустили это поле</span>
+                <input className="popup__input popup__input_content_place" id="place" name="name" type="text" placeholder="Title" value={placeName} onChange={handlePlaceNameChange} required minLength="2" maxLength="30" />
+                <span className="popup__input-error" id="error-place">You missed this field</span>
             </div>
             <div className="popup__input-field">
-                <input className="popup__input popup__input_content_link" id="link" name="link" type="url" placeholder="Ссылка на картинку" value={placeLink} onChange={handlePlaceLink} required />
-                <span className="popup__input-error" id="error-link">Введите адрес сайта</span>
+                <input className="popup__input popup__input_content_link" id="link" name="link" type="url" placeholder="Image link" value={placeLink} onChange={handlePlaceLink} required />
+                <span className="popup__input-error" id="error-link">Enter website address</span>
             </div>
         </PopupWithForm>
     )

@@ -51,4 +51,10 @@ Start project:
 ``` npm run start ```
 
 ## Link ##
-https://project.mesto.nomoredomains.club (deployment is temporarily inactive)
+https://danyaliupinin.github.io/react-mesto-api-full/#/signin
+
+![mesto1](https://github.com/DanyaLiupinin/react-mesto-api-full/assets/98961406/75aa91de-c4ac-4561-80b4-f6247ccacc7d)
+![mesto2](https://github.com/DanyaLiupinin/react-mesto-api-full/assets/98961406/e3a7d30a-7d37-4680-b0fa-a5a9db77987e)
+![mesto3](https://github.com/DanyaLiupinin/react-mesto-api-full/assets/98961406/2b6eff7e-f1cb-47c2-8788-adfa24c94290)
+
+

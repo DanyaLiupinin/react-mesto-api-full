@@ -38,7 +38,7 @@ function AddPlacePopup(props) {
             isOpen={props.isOpen}
             onClose={props.onClose}
             onSubmit={handleSubmit}
-            button='Создать'>
+            button='Create'>
             <div className="popup__input-field">
                 <input className="popup__input popup__input_content_place" id="place" name="name" type="text" placeholder="Title" value={placeName} onChange={handlePlaceNameChange} required minLength="2" maxLength="30" />
                 <span className="popup__input-error" id="error-place">You missed this field</span>
